@@ -838,7 +838,7 @@ MonoBehaviour:
   canJump: 0
   canDrag: 0
   isGrounded: 0
-  speed: 1
+  speed: 7
   jumpForce: 8
   movement: {x: 0, y: 0, z: 0}
   startPos1: 0

@@ -64,6 +64,7 @@ public class PowerUpController : MonoBehaviour
             //this.GetComponent<MovementController>().CanJump(true);
             wingsInv.SetActive(true);
         }
+        wingsInv.SetActive(wings);
         if (!jetpack)
         {
             //this.GetComponent<MovementController>().CanJump(false);
@@ -74,7 +75,7 @@ public class PowerUpController : MonoBehaviour
             //this.GetComponent<MovementController>().CanJump(true);
             jetpackInv.SetActive(true);
         }
-        if (!radar)
+        if (!!!radar == true)
         {
             //this.GetComponent<MovementController>().CanJump(false);
             radarInv.SetActive(false);

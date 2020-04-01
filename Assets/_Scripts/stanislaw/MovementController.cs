@@ -35,12 +35,13 @@ public class MovementController : MonoBehaviour
             ok = false;
         }
         Jump();
-        rb.velocity = new Vector2(Input.GetAxis("Horizontal")* Time.deltaTime * speed*1000, rb.velocity.y) ;
+        rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal")*speed, rb.velocity.y) ;
     }
     void Jump()
     {
         if (Input.GetKeyDown(KeyCode.W) && isGrounded && canJump)
         {
+            rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
         }
     }
