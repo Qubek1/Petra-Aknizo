@@ -18,10 +18,11 @@ public class player_controller : MonoBehaviour
     public Transform GroundCheck;
 
     public GameObject jetpackGO;
+    public GameObject flameGO;
+    public Transform flamePos;
 
     public bool grounded = false;
     int lastVertical = 0;
-    bool doubleJump = true;
 
     public bool legs = false;
     public bool arms = false;
@@ -29,9 +30,13 @@ public class player_controller : MonoBehaviour
     public bool radar = false;
     public bool parachute = false;
 
+    public Animator Anim;
+
     void Update()
     {
         grounded = Physics2D.OverlapCircle(GroundCheck.position, 0.05f, Ground);
+
+        Anim.SetBool("rolling", !legs);
 
         if (legs)
         {
@@ -60,6 +65,7 @@ public class player_controller : MonoBehaviour
             transform.localScale = new Vector3(-1, 1, 1);
         if (kier > 0)
             transform.localScale = new Vector3(1, 1, 1);
+        Anim.SetBool("run", (RB.velocity.x != 0));
     }
 
     void Roll()
@@ -86,6 +92,7 @@ public class player_controller : MonoBehaviour
                 //------------------------------- skok
                 RB.velocity = new Vector2(RB.velocity.x, 0f);
                 RB.AddForce(new Vector2(0, jumpPower), ForceMode2D.Impulse);
+                Anim.SetTrigger("jump");
             }
             else if (jetpack)
             {
@@ -94,14 +101,22 @@ public class player_controller : MonoBehaviour
                 RB.AddForce(new Vector2(0, jumpPower), ForceMode2D.Impulse);
                 jetpack = false;
                 jetpackGO.SetActive(false);
+                Instantiate(flameGO, flamePos.position, new Quaternion(0,0,0,0));
             }
         }
         if(Input.GetAxisRaw("Vertical") < 1 && lastVertical == 1)
         {
             //----------------------------------- nie chcemy dalej skakać
-            RB.velocity = new Vector2(RB.velocity.x, RB.velocity.y * jumpHeight);
+            if(RB.velocity.y > 0)
+                RB.velocity = new Vector2(RB.velocity.x, RB.velocity.y * jumpHeight);
         }
         lastVertical = (int)Input.GetAxisRaw("Vertical");
+        if (RB.velocity.y < 0)
+            Anim.SetInteger("YV", -1);
+        else if (RB.velocity.y > 0)
+            Anim.SetInteger("YV", 1);
+        else
+            Anim.SetInteger("YV", 0);
     }
 
     void OnTriggerEnter2D(Collider2D collider)
@@ -111,6 +126,20 @@ public class player_controller : MonoBehaviour
             jetpack = true;
             jetpackGO.SetActive(true);
             collider.GetComponentInParent<PowerUp>().PickUp();
+        }
+        if (collider.tag == "Arms" && !arms && legs)
+        {
+            arms = true;
+            Anim.SetTrigger("arms");
+            collider.GetComponentInParent<PowerUp>().PickUp();
+        }
+        if (collider.tag == "Legs" && !legs)
+        {
+            legs = true;
+            Anim.SetTrigger("no_arms");
+            collider.GetComponentInParent<PowerUp>().PickUp();
+            transform.rotation = new Quaternion(0,0,0,0);
+            transform.position += new Vector3(0, 0.12f, 0);
         }
     }
 }
