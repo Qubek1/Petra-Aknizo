@@ -34,8 +34,8 @@ public class Escape_Listener : MonoBehaviour
         if (!paused)
         {
             settingsCanvas.SetActive(false);
-            pausebutton.SetActive(true);
         }
+        pausebutton.SetActive(!paused);
     }
 
 }
