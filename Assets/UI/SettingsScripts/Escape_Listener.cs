@@ -6,6 +6,7 @@ public class Escape_Listener : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject pausemenu,settingsCanvas;
+    public GameObject pausebutton;
     public Scene_Man_Script sms;
     public bool paused;
     void Start()
@@ -33,6 +34,7 @@ public class Escape_Listener : MonoBehaviour
         if (!paused)
         {
             settingsCanvas.SetActive(false);
+            pausebutton.SetActive(true);
         }
     }
 
