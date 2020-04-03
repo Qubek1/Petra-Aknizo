@@ -4,20 +4,14 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Floor
-  - Wall
   - Legs
   - Hands
-  - Wings
   - Jetpack
   - Radar
-  - LegsOff
-  - HandsOff
-  - WingsOff
-  - JetpackOff
-  - RadarOff
   - DragCollider
   - Arms
+  - Parachute
+  - Magnes
   layers:
   - Default
   - TransparentFX

@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class flame_contoroller : MonoBehaviour
+public class trash : MonoBehaviour
 {
+    public float lifeTime = 0.4f;
     float time = -1f;
     private void Start()
     {
@@ -11,7 +12,7 @@ public class flame_contoroller : MonoBehaviour
     }
     private void Update()
     {
-        if(Time.time - time > 0.40f && time != -1)
+        if(Time.time - time > lifeTime && time != -1)
         {
             Destroy(gameObject);
         }
