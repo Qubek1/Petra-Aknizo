@@ -8,21 +8,31 @@ public class player_controller : MonoBehaviour
     public float speedJump = 4f;
     public float jumpPower = 5f;
     public float jumpHeight = 0.5f;
+    public float jetpackPower = 7f;
 
     public float rollAcc;
     public float rollSLow;
+    public float rollSpeed;
     public float diameter;
 
     public LayerMask Ground;
     public Rigidbody2D RB;
     public Transform GroundCheck;
 
+    public Transform GraphicHolder;
     public GameObject jetpackGO;
     public GameObject flameGO;
     public Transform flamePos;
+    public GameObject radarGO;
+    public GameObject parachuteGO;
 
-    public bool grounded = false;
+    float GravityScale;
+    public float parachuteGS = 1f;
+    public float parachuteForce = 0.2f;
+
+    bool grounded = false;
     int lastVertical = 0;
+    int parachuteState = 0;
 
     public bool legs = false;
     public bool arms = false;
@@ -32,10 +42,13 @@ public class player_controller : MonoBehaviour
 
     public Animator Anim;
 
+    void Awake()
+    {
+        GravityScale = RB.gravityScale;
+    }
+
     void Update()
     {
-        grounded = Physics2D.OverlapCircle(GroundCheck.position, 0.05f, Ground);
-
         Anim.SetBool("rolling", !legs);
 
         if (legs)
@@ -47,7 +60,9 @@ public class player_controller : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(!legs)
+        grounded = Physics2D.OverlapCircle(GroundCheck.position, 0.1f, Ground);
+        Anim.SetBool("grounded", grounded);
+        if (!legs)
         {
             Roll();
         }
@@ -62,29 +77,74 @@ public class player_controller : MonoBehaviour
             RB.velocity = new Vector2(kier * speedJump, RB.velocity.y);
 
         if (kier < 0)
-            transform.localScale = new Vector3(-1, 1, 1);
+            GraphicHolder.localScale = new Vector3(-1, 1, 1);
         if (kier > 0)
-            transform.localScale = new Vector3(1, 1, 1);
+            GraphicHolder.localScale = new Vector3(1, 1, 1);
         Anim.SetBool("run", (RB.velocity.x != 0));
     }
 
     void Roll()
     {
-        transform.Rotate(0, 0, -RB.velocity.x / Mathf.PI / diameter * Time.fixedDeltaTime * 360f);
-        int kier = (int)Input.GetAxisRaw("Horizontal");
-        if (kier == 0)
+        if (RB.velocity.y < 0 && !grounded && parachute && (int)Input.GetAxisRaw("Parachute") == 1 && parachuteState == 0)
         {
-            RB.velocity = new Vector2((RB.velocity.x) * speed * rollSLow / (speed * rollSLow + rollAcc), RB.velocity.y);
+            parachute = false;
+            parachuteState = 1;
+            GraphicHolder.rotation = new Quaternion(0, 0, 0, 0);
+            RB.velocity = new Vector2(0, RB.velocity.y * parachuteForce);
+            RB.gravityScale = parachuteGS;
+            parachuteGO.SetActive(true);
+            parachuteGO.GetComponent<Animator>().SetTrigger("start");
+        }
+        if(grounded || (int)Input.GetAxisRaw("Parachute") == 0 && parachuteState == 1)
+        {
+            parachuteState = 0;
+            RB.gravityScale = GravityScale;
+            parachuteGO.SetActive(false);
+        }
+
+        int kier = (int)Input.GetAxisRaw("Horizontal");
+        if (parachuteState == 0)
+        {
+            if (!grounded)
+            {
+                GraphicHolder.Rotate(0, 0, -kier * rollSpeed);
+            }
+            else
+            {
+                GraphicHolder.Rotate(0, 0, -RB.velocity.x / Mathf.PI / diameter * Time.fixedDeltaTime * 360f);
+                if (kier == 0)
+                {
+                    RB.velocity = new Vector2((RB.velocity.x) * speed * rollSLow / (speed * rollSLow + rollAcc), RB.velocity.y);
+                }
+                else
+                {
+                    RB.velocity = new Vector2((RB.velocity.x + rollAcc * kier) * speed / (speed + rollAcc), RB.velocity.y);
+                }
+            }
+
+            if(jetpack && (int)Input.GetAxisRaw("Vertical") == 1)
+            {
+                jetpack = false;
+                jetpackGO.SetActive(false);
+                Instantiate(flameGO, flamePos.position, GraphicHolder.rotation);
+                Vector2 F = GraphicHolder.up * jetpackPower;
+                RB.velocity = new Vector2(RB.velocity.x, 0);
+                RB.AddForce(F, ForceMode2D.Impulse);
+            }
         }
         else
         {
-            RB.velocity = new Vector2((RB.velocity.x + rollAcc * kier) * speed / (speed + rollAcc), RB.velocity.y);
+            RB.velocity = new Vector2(kier * speedJump, RB.velocity.y);
+            if (kier > 0)
+                GraphicHolder.localScale = new Vector3(1, 1, 1);
+            if (kier < 0)
+                GraphicHolder.localScale = new Vector3(-1, 1, 1);
         }
     }
 
     void Jump()
     {
-        if (Input.GetAxisRaw("Vertical") == 1 && lastVertical < 1)
+        if ((int)Input.GetAxisRaw("Vertical") == 1 && lastVertical < 1 && parachuteState == 0)
         {
             //----------------------------------- probujemy skoczyc
             if (grounded)
@@ -98,18 +158,36 @@ public class player_controller : MonoBehaviour
             {
                 //------------------------------- podwojny skok
                 RB.velocity = new Vector2(RB.velocity.x, 0f);
-                RB.AddForce(new Vector2(0, jumpPower), ForceMode2D.Impulse);
+                RB.AddForce(new Vector2(0, jetpackPower), ForceMode2D.Impulse);
                 jetpack = false;
                 jetpackGO.SetActive(false);
-                Instantiate(flameGO, flamePos.position, new Quaternion(0,0,0,0));
+                Instantiate(flameGO, flamePos.position, flamePos.rotation);
             }
         }
-        if(Input.GetAxisRaw("Vertical") < 1 && lastVertical == 1)
+        if((int)Input.GetAxisRaw("Vertical") < 1 && lastVertical == 1 && parachuteState == 0)
         {
             //----------------------------------- nie chcemy dalej skakać
             if(RB.velocity.y > 0)
                 RB.velocity = new Vector2(RB.velocity.x, RB.velocity.y * jumpHeight);
         }
+
+        //--------------------------------------spadochron
+        if ((int)Input.GetAxisRaw("Parachute") == 1 && parachute && parachuteState == 0 && RB.velocity.y < 0 && grounded == false)
+        {
+            parachute = false;
+            parachuteState = 1;
+            RB.gravityScale = parachuteGS;
+            RB.velocity = new Vector2(RB.velocity.x, RB.velocity.y * parachuteForce);
+            parachuteGO.SetActive(true);
+            parachuteGO.GetComponent<Animator>().SetTrigger("start");
+        }
+        if ((int)Input.GetAxisRaw("Parachute") == 0 || RB.velocity.y >= 0 || grounded)
+        {
+            parachuteState = 0;
+            RB.gravityScale = GravityScale;
+            parachuteGO.SetActive(false);
+        }
+
         lastVertical = (int)Input.GetAxisRaw("Vertical");
         if (RB.velocity.y < 0)
             Anim.SetInteger("YV", -1);
@@ -121,11 +199,11 @@ public class player_controller : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.tag == "Jetpack" && !jetpack && legs)
+        if (collider.tag == "Jetpack" && !jetpack)
         {
             jetpack = true;
-            jetpackGO.SetActive(true);
             collider.GetComponentInParent<PowerUp>().PickUp();
+            jetpackGO.SetActive(true);
         }
         if (collider.tag == "Arms" && !arms && legs)
         {
@@ -133,13 +211,40 @@ public class player_controller : MonoBehaviour
             Anim.SetTrigger("arms");
             collider.GetComponentInParent<PowerUp>().PickUp();
         }
+        if (collider.tag == "Radar" && !radar)
+        {
+            radar = true;
+            collider.GetComponentInParent<PowerUp>().PickUp();
+            radarGO.SetActive(true);
+        }
+        if (collider.tag == "Parachute" && !parachute)
+        {
+            parachute = true;
+            collider.GetComponentInParent<PowerUp>().PickUp();
+        }
         if (collider.tag == "Legs" && !legs)
         {
             legs = true;
             Anim.SetTrigger("no_arms");
             collider.GetComponentInParent<PowerUp>().PickUp();
-            transform.rotation = new Quaternion(0,0,0,0);
-            transform.position += new Vector3(0, 0.12f, 0);
+            GraphicHolder.rotation = new Quaternion(0,0,0,0);
+            GraphicHolder.position += new Vector3(0, 0.13f, 0);
+        }
+        if (collider.tag == "Magnes")
+        {
+            if(legs)
+                GraphicHolder.position -= new Vector3(0, 0.13f, 0);
+            legs = false;
+            arms = false;
+            radar = false;
+            jetpack = false;
+            parachute = false;
+            GraphicHolder.localScale = new Vector3(1, 1, 1);
+            radarGO.SetActive(false);
+            jetpackGO.SetActive(false);
+            parachuteGO.SetActive(false);
+            parachuteState = 0;
+            RB.gravityScale = GravityScale;
         }
     }
 }

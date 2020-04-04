@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8bce7c6a5029d54c9d87f3184c423b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lifeTime: 0.4
 --- !u!1 &6602167397749902969
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,7 +157,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6602167398791319859}
   m_Layer: 0
-  m_Name: flame_offset
+  m_Name: offset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
