@@ -12,6 +12,14 @@ TagManager:
   - Arms
   - Parachute
   - Magnes
+  - RadarOff
+  - Floor
+  - Wings
+  - JetpackOff
+  - HandsOff
+  - WingsOff
+  - Wall
+  - LegsOff
   layers:
   - Default
   - TransparentFX
@@ -26,7 +34,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - CameraConfiner
   - 
   - 
   - 
@@ -46,6 +54,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BG
+    uniqueID: 432332953
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

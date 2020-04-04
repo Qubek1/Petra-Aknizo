@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8b5aff1421118d943828a257edc229ae, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2aa092af935da3243a2df92daf0fef3b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -202,7 +202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: 585188cdc4600544eb408bee749e4b3a, type: 3}
+  m_Material: {fileID: 2100000, guid: e63769a8eec047f479f8a9169b0a9497, type: 3}
   m_Color: {r: 0.69411767, g: 0.47450984, b: 0.29803923, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -210,7 +210,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 01bc19ad9a67a4c4db4edc98ab513a7d, type: 3}
+    m_Font: {fileID: 12800000, guid: f5ecd7df9baf7694e89ccce725183c8a, type: 3}
     m_FontSize: 32
     m_FontStyle: 0
     m_BestFit: 0
