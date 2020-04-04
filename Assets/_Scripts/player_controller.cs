@@ -12,7 +12,8 @@ public class player_controller : MonoBehaviour
 
     public float rollAcc;
     public float rollSLow;
-    public float rollSpeed;
+    float rollSpeed;
+    public float rollingAcc;
     public float diameter;
 
     public LayerMask Ground;
@@ -107,11 +108,14 @@ public class player_controller : MonoBehaviour
         {
             if (!grounded)
             {
-                GraphicHolder.Rotate(0, 0, -kier * rollSpeed);
+                GraphicHolder.Rotate(0, 0, rollSpeed * Time.fixedDeltaTime);
+                rollSpeed += rollingAcc * -kier;
+                rollSpeed *= 0.96f;
             }
             else
             {
                 GraphicHolder.Rotate(0, 0, -RB.velocity.x / Mathf.PI / diameter * Time.fixedDeltaTime * 360f);
+                rollSpeed = -RB.velocity.x / Mathf.PI / diameter * 360f;
                 if (kier == 0)
                 {
                     RB.velocity = new Vector2((RB.velocity.x) * speed * rollSLow / (speed * rollSLow + rollAcc), RB.velocity.y);
@@ -228,12 +232,12 @@ public class player_controller : MonoBehaviour
             Anim.SetTrigger("no_arms");
             collider.GetComponentInParent<PowerUp>().PickUp();
             GraphicHolder.rotation = new Quaternion(0,0,0,0);
-            GraphicHolder.position += new Vector3(0, 0.13f, 0);
+            //GraphicHolder.position += new Vector3(0, 0.13f, 0);
         }
         if (collider.tag == "Magnes")
         {
-            if(legs)
-                GraphicHolder.position -= new Vector3(0, 0.13f, 0);
+            //if(legs)
+                //GraphicHolder.position -= new Vector3(0, 0.13f, 0);
             legs = false;
             arms = false;
             radar = false;
