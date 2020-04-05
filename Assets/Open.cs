@@ -11,9 +11,9 @@ public class Open : MonoBehaviour
         parent_tilemap = this.transform.parent.gameObject;
     }
 
-    void OnTriggerEnter2D(Collider2D col)
+    void OnTriggerStay2D(Collider2D col)
     {
-        if (col.gameObject.tag == "Player" && col.gameObject.GetComponent<player_controller>().arms)
+        if (col.gameObject.tag == "Player" && col.gameObject.GetComponent<player_controller>().arms && Input.GetAxisRaw("ButtonPress")==1)
         {
             parent_tilemap.SetActive(false);
         }

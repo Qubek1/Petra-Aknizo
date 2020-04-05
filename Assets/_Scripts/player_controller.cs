@@ -43,6 +43,8 @@ public class player_controller : MonoBehaviour
 
     public Animator Anim;
     Transform m_currMovingPlatform;
+    bool onPlatform;
+    Vector3 platformSpeed;
     public bool GetPowerState(string name)
     {
         switch (name)
@@ -144,10 +146,11 @@ public class player_controller : MonoBehaviour
         }
 
         int kier = (int)Input.GetAxisRaw("Horizontal");
-        if (kier != 0)
+        if (kier!=0)
         {
             transform.parent = null; // Dla poruszających się platform
             RB.isKinematic = false;
+            //Debug.Log(0);
         }
         if (parachuteState == 0)
         {
@@ -198,10 +201,11 @@ public class player_controller : MonoBehaviour
 
     void Jump()
     {
-        if (Input.GetAxisRaw("Vertical")!=0)
+        if (Input.GetAxisRaw("Vertical")==0 && grounded)
         {
-            transform.parent = null; //Dla poruszającyh sięplatform
-            RB.isKinematic = false;
+            //transform.parent = null; //Dla poruszającyh sięplatform
+            //RB.isKinematic = false;
+            RB.velocity = new Vector2(RB.velocity.x, platformSpeed.y);
         }
         if ((int)Input.GetAxisRaw("Vertical") == 1 && lastVertical < 1 && parachuteState == 0)
         {
@@ -312,10 +316,11 @@ public class player_controller : MonoBehaviour
         //Debug.Log(1);
         if (coll.gameObject.tag == "MovingPlatform")
         {
-            //Debug.Log("yes");
             m_currMovingPlatform = coll.gameObject.transform;
+            platformSpeed = coll.gameObject.GetComponent<Rigidbody2D>().velocity;
+            onPlatform = true;
             transform.SetParent(m_currMovingPlatform);
-            RB.isKinematic = true;
+            //RB.isKinematic = true;
         }
     }
     void OnCollisionStay2D(Collision2D coll)
@@ -323,8 +328,11 @@ public class player_controller : MonoBehaviour
         if (coll.gameObject.tag == "MovingPlatform")
         {
             m_currMovingPlatform = coll.gameObject.transform;
+            platformSpeed = coll.gameObject.GetComponent<Rigidbody2D>().velocity;
             transform.SetParent(m_currMovingPlatform);
-            RB.isKinematic = true;
+            this.gameObject.transform.position += new Vector3(platformSpeed.x, 0, 0) * Time.fixedDeltaTime;
+            //RB.velocity = new Vector2(RB.velocity.x, platformSpeed.y);
+            //RB.isKinematic = true;
         }
     }
         void OnCollisionExit2D(Collision2D coll)
@@ -334,6 +342,7 @@ public class player_controller : MonoBehaviour
             //Debug.Log("no");
             m_currMovingPlatform = null;
             RB.isKinematic = false;
+            onPlatform = false;
         }
     }
 }
