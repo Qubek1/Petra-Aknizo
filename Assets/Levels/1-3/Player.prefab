@@ -333,8 +333,8 @@ MonoBehaviour:
   - {fileID: 3689006053847499051}
   - {fileID: 3689006052448845057}
   m_Bounds:
-    m_Center: {x: -0.24395406, y: 0.33291942, z: 0}
-    m_Extent: {x: 0.86062217, y: 0.76682585, z: 0}
+    m_Center: {x: -0.24395382, y: 0.3329195, z: 0}
+    m_Extent: {x: 0.8606219, y: 0.7668259, z: 0}
   m_UseBatching: 1
 --- !u!95 &3689006052021614475
 Animator:
@@ -779,7 +779,7 @@ GameObject:
   - component: {fileID: 3689006053750695815}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
