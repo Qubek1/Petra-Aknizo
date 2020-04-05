@@ -34,9 +34,6 @@ public class PowerOn : MonoBehaviour
     {
         bool x = pc.GetPowerState(gameObject.name);
         SwitchOnff(x);
-        if (gameObject.name == "Jetpack_Monitor")
-        {
-            Debug.Log(gameObject.name + " " + x);
-        }
+
     }
 }
