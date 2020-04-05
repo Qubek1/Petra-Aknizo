@@ -42,7 +42,7 @@ public class player_controller : MonoBehaviour
     public bool parachute = false;
 
     public Animator Anim;
-
+    Transform m_currMovingPlatform;
     public bool GetPowerState(string name)
     {
         switch (name)
@@ -80,6 +80,7 @@ public class player_controller : MonoBehaviour
     void Awake()
     {
         GravityScale = RB.gravityScale;
+        transform.parent = null;
     }
 
     void Update()
@@ -106,6 +107,11 @@ public class player_controller : MonoBehaviour
     void Move()
     {
         int kier = (int)Input.GetAxisRaw("Horizontal");
+        if (kier!=0)
+        {
+            transform.parent = null; // Dla poruszających się platform
+            RB.isKinematic = false;
+        }
         if(grounded)
             RB.velocity = new Vector2(kier * speed, RB.velocity.y);
         else
@@ -138,6 +144,11 @@ public class player_controller : MonoBehaviour
         }
 
         int kier = (int)Input.GetAxisRaw("Horizontal");
+        if (kier != 0)
+        {
+            transform.parent = null; // Dla poruszających się platform
+            RB.isKinematic = false;
+        }
         if (parachuteState == 0)
         {
             if (!grounded)
@@ -173,6 +184,11 @@ public class player_controller : MonoBehaviour
         else
         {
             RB.velocity = new Vector2(kier * speedJump, RB.velocity.y);
+            if (kier != 0)
+            {
+                transform.parent = null; // Dla poruszających się platform
+                RB.isKinematic = false;
+            }
             if (kier > 0)
                 GraphicHolder.localScale = new Vector3(1, 1, 1);
             if (kier < 0)
@@ -182,6 +198,11 @@ public class player_controller : MonoBehaviour
 
     void Jump()
     {
+        if (Input.GetAxisRaw("Vertical")!=0)
+        {
+            transform.parent = null; //Dla poruszającyh sięplatform
+            RB.isKinematic = false;
+        }
         if ((int)Input.GetAxisRaw("Vertical") == 1 && lastVertical < 1 && parachuteState == 0)
         {
             //----------------------------------- probujemy skoczyc
@@ -283,6 +304,36 @@ public class player_controller : MonoBehaviour
             parachuteGO.SetActive(false);
             parachuteState = 0;
             RB.gravityScale = GravityScale;
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D coll)
+    {
+        //Debug.Log(1);
+        if (coll.gameObject.tag == "MovingPlatform")
+        {
+            //Debug.Log("yes");
+            m_currMovingPlatform = coll.gameObject.transform;
+            transform.SetParent(m_currMovingPlatform);
+            RB.isKinematic = true;
+        }
+    }
+    void OnCollisionStay2D(Collision2D coll)
+    {
+        if (coll.gameObject.tag == "MovingPlatform")
+        {
+            m_currMovingPlatform = coll.gameObject.transform;
+            transform.SetParent(m_currMovingPlatform);
+            RB.isKinematic = true;
+        }
+    }
+        void OnCollisionExit2D(Collision2D coll)
+    {
+        if (coll.gameObject.tag == "MovingPlatform")
+        {
+            //Debug.Log("no");
+            m_currMovingPlatform = null;
+            RB.isKinematic = false;
         }
     }
 }
