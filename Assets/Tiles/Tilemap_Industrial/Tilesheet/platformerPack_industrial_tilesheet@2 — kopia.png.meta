@@ -1,0 +1,241 @@
+fileFormatVersion: 2
+guid: 0d9b33d7b896f34439e77819ddf29c4f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -9166508956626110646
+    second: "platformerPack_industrial_tilesheet@2 \u2014 kopia_0"
+  - first:
+      213: -4268797972945348306
+    second: "platformerPack_industrial_tilesheet@2 \u2014 kopia_1"
+  - first:
+      213: 5365930059393660071
+    second: "platformerPack_industrial_tilesheet@2 \u2014 kopia_2"
+  - first:
+      213: -2163475164290123465
+    second: "platformerPack_industrial_tilesheet@2 \u2014 kopia_3"
+  - first:
+      213: -6973758325210675846
+    second: "platformerPack_industrial_tilesheet@2 \u2014 kopia_4"
+  - first:
+      213: -1235696263929034237
+    second: "platformerPack_industrial_tilesheet@2 \u2014 kopia_5"
+  - first:
+      213: 7669910559353502689
+    second: "platformerPack_industrial_tilesheet@2 \u2014 kopia_6"
+  - first:
+      213: 9208450465672528357
+    second: "platformerPack_industrial_tilesheet@2 \u2014 kopia_7"
+  - first:
+      213: 1800625466089958038
+    second: "platformerPack_industrial_tilesheet@2 \u2014 kopia_8"
+  - first:
+      213: -5060705997550512083
+    second: "platformerPack_industrial_tilesheet@2 \u2014 kopia_9"
+  - first:
+      213: 8542162523587529162
+    second: "platformerPack_industrial_tilesheet@2 \u2014 kopia_10"
+  - first:
+      213: -276906484812036571
+    second: "platformerPack_industrial_tilesheet@2 \u2014 kopia_11"
+  - first:
+      213: 5399511662062046506
+    second: "platformerPack_industrial_tilesheet@2 \u2014 kopia_12"
+  - first:
+      213: -7746214004492495851
+    second: "platformerPack_industrial_tilesheet@2 \u2014 kopia_13"
+  - first:
+      213: 4674397487703536296
+    second: "platformerPack_industrial_tilesheet@2 \u2014 kopia_14"
+  - first:
+      213: 7672534141528166157
+    second: "platformerPack_industrial_tilesheet@2 \u2014 kopia_15"
+  - first:
+      213: -2089804155518612275
+    second: "platformerPack_industrial_tilesheet@2 \u2014 kopia_16"
+  - first:
+      213: 1321371050565792843
+    second: "platformerPack_industrial_tilesheet@2 \u2014 kopia_17"
+  - first:
+      213: -4909538567010558022
+    second: "platformerPack_industrial_tilesheet@2 \u2014 kopia_18"
+  - first:
+      213: -3316066903947259536
+    second: "platformerPack_industrial_tilesheet@2 \u2014 kopia_19"
+  - first:
+      213: -6914632741953904739
+    second: "platformerPack_industrial_tilesheet@2 \u2014 kopia_20"
+  - first:
+      213: -4266761170813942462
+    second: "platformerPack_industrial_tilesheet@2 \u2014 kopia_21"
+  - first:
+      213: -1613734310341059639
+    second: "platformerPack_industrial_tilesheet@2 \u2014 kopia_22"
+  - first:
+      213: 8018157444428001014
+    second: "platformerPack_industrial_tilesheet@2 \u2014 kopia_23"
+  - first:
+      213: -6918021015347888817
+    second: "platformerPack_industrial_tilesheet@2 \u2014 kopia_24"
+  - first:
+      213: 1690437773649116823
+    second: "platformerPack_industrial_tilesheet@2 \u2014 kopia_25"
+  - first:
+      213: 4498828033014655069
+    second: "platformerPack_industrial_tilesheet@2 \u2014 kopia_26"
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: "platformerPack_industrial_tilesheet@2 \u2014 kopia_7"
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 640
+        width: 420
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e1013af8ecfacf70800000000000000
+      internalID: 9208450465672528357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "platformerPack_industrial_tilesheet@2 \u2014 kopia_1"
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 796
+        width: 420
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e295fa45cde22c4c0800000000000000
+      internalID: -4268797972945348306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
