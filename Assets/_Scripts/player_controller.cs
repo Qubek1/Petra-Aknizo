@@ -43,6 +43,40 @@ public class player_controller : MonoBehaviour
 
     public Animator Anim;
 
+    public bool GetPowerState(string name)
+    {
+        switch (name)
+        {
+            case "Legs_Monitor":
+                {
+                    return legs;
+                    break;
+                }
+            case "Arms_Monitor":
+                {
+                    return arms;
+                    break;
+                }
+            case "Jetpack_Monitor":
+                {
+                    return jetpack;
+                    break;
+                }
+            case "Radar_Monitor":
+                {
+                    return radar;
+                    break;
+                }
+            case "Parachute_Monitor":
+                {
+                    return parachute;
+                    break;
+                }
+
+        }
+        return false;
+    }
+
     void Awake()
     {
         GravityScale = RB.gravityScale;
@@ -52,7 +86,7 @@ public class player_controller : MonoBehaviour
     {
         Anim.SetBool("rolling", !legs);
 
-        if (legs)
+        if (legs && Time.timeScale!=0)
         {
             Move();
             Jump();

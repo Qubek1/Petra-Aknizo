@@ -9,7 +9,14 @@ public class Scene_Man_Script : MonoBehaviour
     public void Load(string scene)
     {
         Debug.Log(scene);
-        SceneManager.LoadScene(scene);
+        if (scene=="this")
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+        else
+        {
+            SceneManager.LoadScene(scene);
+        }
     }
     public void QuitGame()
     {
