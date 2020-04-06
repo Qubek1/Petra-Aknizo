@@ -42,6 +42,10 @@ public class player_controller : MonoBehaviour
     public bool parachute = false;
 
     public Animator Anim;
+
+    public GameObject Hitbox1;
+    public GameObject Hitbox2;
+
     Transform m_currMovingPlatform;
     bool onPlatform;
     Vector3 platformSpeed;
@@ -287,6 +291,8 @@ public class player_controller : MonoBehaviour
         }
         if (collider.tag == "Legs" && !legs)
         {
+            Hitbox2.SetActive(true);
+            Hitbox1.SetActive(false);
             legs = true;
             Anim.SetTrigger("no_arms");
             collider.GetComponentInParent<PowerUp>().PickUp();
@@ -308,6 +314,8 @@ public class player_controller : MonoBehaviour
             parachuteGO.SetActive(false);
             parachuteState = 0;
             RB.gravityScale = GravityScale;
+            Hitbox2.SetActive(false);
+            Hitbox1.SetActive(true);
         }
     }
 

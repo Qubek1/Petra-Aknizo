@@ -3437,10 +3437,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3689006053750695812, guid: 926992faa8fabf44ebdab8edd16527dd, type: 3}
-      propertyPath: parachuteGS
-      value: 0.3
-      objectReference: {fileID: 0}
     - target: {fileID: 3689006053750695816, guid: 926992faa8fabf44ebdab8edd16527dd, type: 3}
       propertyPath: m_Name
       value: Player
