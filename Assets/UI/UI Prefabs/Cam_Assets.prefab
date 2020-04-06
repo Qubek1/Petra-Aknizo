@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &838381061134330019
 Transform:
   m_ObjectHideFlags: 0
@@ -273,7 +273,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7450709521658604514}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -298,6 +298,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UC: {fileID: 838381061134330018}
   PBC: {fileID: 7450709521948126119}
+  EL: {fileID: 0}
 --- !u!1 &7450709521670456530
 GameObject:
   m_ObjectHideFlags: 0
@@ -344,7 +345,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 1
-  m_Offset: {x: 16, y: 1}
+  m_Offset: {x: 17.378868, y: -15.727016}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -355,7 +356,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 1
   serializedVersion: 2
-  m_Size: {x: 50.311504, y: 19.42578}
+  m_Size: {x: 54.352325, y: 47.115273}
   m_EdgeRadius: 0
 --- !u!50 &7450709521670456543
 Rigidbody2D:
@@ -398,20 +399,20 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 7450709521670456542}
     m_ColliderPaths:
-    - - X: 411557243
-        Y: -87128896
-      - X: 411557243
-        Y: 107128896
-      - X: -91557520
-        Y: 107128603
-      - X: -91557227
-        Y: -87128896
+    - - X: 445550011
+        Y: -392846528
+      - X: 445550011
+        Y: 78306200
+      - X: -97972944
+        Y: 78305907
+      - X: -97972651
+        Y: -392846528
   m_CompositePaths:
     m_Paths:
-    - - {x: 41.155697, y: -8.71289}
-      - {x: 41.155697, y: 10.71289}
-      - {x: -9.155752, y: 10.7128315}
-      - {x: -9.155694, y: -8.71289}
+    - - {x: 44.554974, y: -39.284653}
+      - {x: 44.554974, y: 7.8306203}
+      - {x: -9.797295, y: 7.8305616}
+      - {x: -9.797236, y: -39.284653}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
 --- !u!1 &7450709521948126119
@@ -431,7 +432,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7450709521948126118
 Transform:
   m_ObjectHideFlags: 0
@@ -440,7 +441,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7450709521948126119}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.81246, y: -0.7959305, z: -10}
+  m_LocalPosition: {x: -8.9, y: -2.17, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7450709522074050468}
@@ -564,8 +565,8 @@ MonoBehaviour:
   m_ScreenX: 0.5
   m_ScreenY: 0.5
   m_CameraDistance: 10
-  m_DeadZoneWidth: 0.3
-  m_DeadZoneHeight: 0.2
+  m_DeadZoneWidth: 0.124
+  m_DeadZoneHeight: 0.1
   m_DeadZoneDepth: 0
   m_UnlimitedSoftZone: 0
   m_SoftZoneWidth: 0.6
@@ -613,7 +614,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7450709523222252016}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -91.49942}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 886929672631311895}
@@ -622,7 +623,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 11.795564, y: -3.7128892}
+  m_AnchoredPosition: {x: -0.9083872, y: -2.16999}
   m_SizeDelta: {x: 140, y: 140}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!20 &7450709523222252027
@@ -648,9 +649,9 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.1
-  far clip plane: 5000
-  field of view: 40
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
   orthographic: 1
   orthographic size: 5
   m_Depth: -1
@@ -688,8 +689,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ShowDebugText: 1
-  m_ShowCameraFrustum: 1
+  m_ShowDebugText: 0
+  m_ShowCameraFrustum: 0
   m_IgnoreTimeScale: 1
   m_WorldUpOverride: {fileID: 0}
   m_UpdateMethod: 2
