@@ -46,6 +46,8 @@ public class player_controller : MonoBehaviour
     public GameObject Hitbox1;
     public GameObject Hitbox2;
 
+    public GameObject radarMask;
+
     Transform m_currMovingPlatform;
     bool onPlatform;
     Vector3 platformSpeed;
@@ -102,7 +104,7 @@ public class player_controller : MonoBehaviour
 
     void FixedUpdate()
     {
-        grounded = Physics2D.OverlapCircle(GroundCheck.position, 0.1f, Ground);
+        grounded = Physics2D.OverlapCircle(GroundCheck.position, 0.33f, Ground);
         Anim.SetBool("grounded", grounded);
         if (!legs)
         {
@@ -205,7 +207,7 @@ public class player_controller : MonoBehaviour
 
     void Jump()
     {
-        if (Input.GetAxisRaw("Vertical")==0 && grounded)
+        if (Input.GetAxisRaw("Vertical")==0 && grounded && onPlatform)
         {
             //transform.parent = null; //Dla poruszającyh sięplatform
             //RB.isKinematic = false;
@@ -283,6 +285,7 @@ public class player_controller : MonoBehaviour
             radar = true;
             collider.GetComponentInParent<PowerUp>().PickUp();
             radarGO.SetActive(true);
+            radarMask.SetActive(true);
         }
         if (collider.tag == "Parachute" && !parachute)
         {
@@ -316,6 +319,7 @@ public class player_controller : MonoBehaviour
             RB.gravityScale = GravityScale;
             Hitbox2.SetActive(false);
             Hitbox1.SetActive(true);
+            radarMask.SetActive(false);
         }
     }
 
@@ -343,7 +347,7 @@ public class player_controller : MonoBehaviour
             //RB.isKinematic = true;
         }
     }
-        void OnCollisionExit2D(Collision2D coll)
+    void OnCollisionExit2D(Collision2D coll)
     {
         if (coll.gameObject.tag == "MovingPlatform")
         {
@@ -352,5 +356,11 @@ public class player_controller : MonoBehaviour
             RB.isKinematic = false;
             onPlatform = false;
         }
+    }
+
+    public void DestroyArms()
+    {
+        arms = false;
+        Anim.SetTrigger("no_arms");
     }
 }

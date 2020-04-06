@@ -8,6 +8,7 @@ public class CamMan : MonoBehaviour
     bool Activated = false;
     public GameObject UC, PBC;
     CinemachineVirtualCamera UCCVC, PBCCVC;
+    public Escape_Listener EL;
     void Start()
     {
         UCCVC = UC.GetComponent<CinemachineVirtualCamera>();
@@ -27,7 +28,8 @@ public class CamMan : MonoBehaviour
             PBC.SetActive(true);
             UC.SetActive(false);
             UC.transform.position = PBC.transform.position;
-            Time.timeScale = 1;
+            if(!EL.paused)
+                Time.timeScale = 1;
         }
         else
         {

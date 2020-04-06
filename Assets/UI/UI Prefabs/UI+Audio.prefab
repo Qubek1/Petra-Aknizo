@@ -5351,7 +5351,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &40473591676239988
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5775,7 +5775,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resdrop: {fileID: 40473591290454790}
-  qualdrop: {fileID: 40473591676239987}
   fstogg: {fileID: 40473590518444996}
 --- !u!1 &40473591852837643
 GameObject:

@@ -7,7 +7,7 @@ public class SSR : MonoBehaviour
 {
     // Set Screen Resolution
     Resolution[] reslist;
-    public Dropdown resdrop, qualdrop;
+    public Dropdown resdrop;
     public Toggle fstogg;
 
     void Awake()
@@ -30,8 +30,6 @@ public class SSR : MonoBehaviour
         resdrop.AddOptions(options);
         resdrop.value = currentResolutionIndex;
         resdrop.RefreshShownValue();
-        qualdrop.value = QualitySettings.GetQualityLevel();
-        qualdrop.RefreshShownValue();
         fstogg.isOn = Screen.fullScreen;
     }
     public void SetResolution(int resolutionIndex)
@@ -42,9 +40,5 @@ public class SSR : MonoBehaviour
     public void SetFullscreen(bool fs)
     {
         Screen.fullScreen = fs;
-    }
-    public void SetQuality(int qualind) //quality index
-    {
-        QualitySettings.SetQualityLevel(qualind);
     }
 }
