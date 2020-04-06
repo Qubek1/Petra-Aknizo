@@ -3048,7 +3048,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resdrop: {fileID: 623713341}
-  qualdrop: {fileID: 110463982}
   fstogg: {fileID: 131130988}
 --- !u!1 &975321640
 GameObject:
@@ -5740,7 +5739,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resdrop: {fileID: 5449596667023166916}
-  qualdrop: {fileID: 5449596666603826865}
   fstogg: {fileID: 5449596667728076038}
 --- !u!4 &5449596666469552427
 Transform:
@@ -6120,7 +6118,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!222 &5449596666645799033
 CanvasRenderer:
   m_ObjectHideFlags: 0
