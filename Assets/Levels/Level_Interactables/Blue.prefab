@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5688876728096017201}
   - component: {fileID: 5688876728096017200}
   m_Layer: 8
-  m_Name: Walls
+  m_Name: Walls_Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1226,3 +1226,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 026a556001d16f24d9f2cff6f96d4a51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pc: {fileID: 0}
