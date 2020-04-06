@@ -55,6 +55,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: "t\u0142o"
+    uniqueID: 152781829
+    locked: 0
   - name: BG
     uniqueID: 432332953
     locked: 0
