@@ -35,7 +35,8 @@ public class MovementController : MonoBehaviour
             ok = false;
         }
         Jump();
-        rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal")*speed, rb.velocity.y) ;
+        transform.position += new Vector3(Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime, 0, 0);
+        //rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal")*speed, rb.velocity.y) ;
     }
     void Jump()
     {

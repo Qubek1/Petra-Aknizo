@@ -58,27 +58,22 @@ public class player_controller : MonoBehaviour
             case "Legs_Monitor":
                 {
                     return legs;
-                    break;
                 }
             case "Arms_Monitor":
                 {
                     return arms;
-                    break;
                 }
             case "Jetpack_Monitor":
                 {
                     return jetpack;
-                    break;
                 }
             case "Radar_Monitor":
                 {
                     return radar;
-                    break;
                 }
             case "Parachute_Monitor":
                 {
                     return parachute;
-                    break;
                 }
 
         }
